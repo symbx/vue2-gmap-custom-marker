@@ -31,6 +31,10 @@
       cssPosition: {
         type: Boolean,
         default: false
+      },
+      objectID: {
+        required: false,
+        default: null
       }
     },
     inject: {
@@ -80,6 +84,7 @@
             this.setMap(map);
             this.draw = () => this.repaint();
             this.setPosition = () => this.repaint();
+            this.oid = self.objectID;
           }
           repaint () {
             const div = self.$el;
@@ -165,6 +170,9 @@
                 self.$el.remove();
               }
             }
+          }
+          getObjectID () {
+            return this.oid
           }
         }
         this.$overlay = new Overlay(map);
